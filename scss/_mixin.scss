@@ -1,0 +1,29 @@
+@mixin sliderConfig($url){
+    width:50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url($url);
+}
+
+@mixin  circleDrow($diametr) {
+    border-radius: 50%;
+    height: $diametr;
+    width: $diametr;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin  setText($fontFamily,$size,$weight) {
+    font-family: $fontFamily;
+    font-weight: $weight;
+    font-size: $size;
+}
+
+@mixin setFlex($justify,$align,$direction) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-direction: $direction;
+}

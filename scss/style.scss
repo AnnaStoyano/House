@@ -1,0 +1,422 @@
+@import "config";
+@import 'mixin';
+@import 'setting';
+
+.slider {
+    overflow: hidden;
+    z-index: 50;
+
+    .navigation {
+        width: 205px;
+        top: -125px;
+        left: 110px;
+    }
+}
+
+.slides {
+    width: 200%;
+    height: 100%;
+    display: flex;
+}
+
+.slide {
+    transition: all .8s ease;
+    height: 100%;
+    @include setFlex(space-between, flex-start, column);
+    position: relative;
+    padding: 22px 45px;
+
+    &-1 {
+        @include sliderConfig("../svg/header-bg1.png");
+    }
+
+    &-2 {
+        @include sliderConfig("../svg/header-bg2.png");
+
+        .logo {
+            width: 69px;
+            @include setText($fontLogo, 24.5753px, 500);
+            color: $gray;
+            position: relative;
+            text-transform: uppercase;
+            margin-top: 15px;
+
+            &::before {
+                position: absolute;
+                top: -15px;
+                @include setFlex(flex-start, center, row);
+                content: 'КЛУБНЫЙ';
+                @include setText($fontSlider, 13.2329px, 500);
+            }
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 35%;
+                left: 38%;
+                @include circleDrow(3.78px);
+                background-color: $orange;
+                border: 1px solid $orange;
+            }
+        }
+    }
+
+    &-header {
+        display: flex;
+        width: 100%;
+
+        .phone {
+            display: grid;
+            grid-template-columns: 30px 113px;
+            grid-template-rows: 1fr 1fr;
+            column-gap: 10px;
+            grid-template-areas: 'i phone''i info';
+
+            &-number {
+                color: $orange;
+                font-size: 14px;
+                grid-area: phone;
+            }
+
+            &-action {
+                font-size: 10px;
+                width: 78px;
+                line-height: 16px;
+                color: $gray;
+                position: relative;
+                grid-area: info;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 1px;
+                    top: 110%;
+                    left: 0;
+                    background-color: $orange;
+                    transition: transform .5s ease-in;
+                }
+
+                &:hover::after {
+                    transform: rotate(180deg);
+                }
+            }
+
+            .icon-circle {
+                color: $orange;
+            }
+        }
+
+        .language {
+            .icon-circle {
+                color: $gray;
+                letter-spacing: 0.05em;
+                font-size: 10px;
+                text-transform: uppercase;
+            }
+        }
+
+    }
+
+    &-counter {
+        width: 1px;
+        background-color: $navBar;
+        height: 78px;
+        top: 35%;
+        position: absolute;
+
+        span {
+            display: inline-block;
+            transform: rotate(-90deg);
+        }
+
+        &-checked {
+            position: absolute;
+            color: $orange;
+            font-size: 12px;
+            left: -5px;
+            top: -25px;
+        }
+
+        &-unchecked {
+            position: absolute;
+            color: $navBar;
+            font-size: 10px;
+            left: -5px;
+            top: 90px;
+        }
+
+        &-d {
+            position: absolute;
+            width: 1px;
+            height: 25px;
+            display: inline-block;
+            background-color: $white;
+        }
+    }
+
+    &-main {
+        padding-left: 4.6%;
+
+        .main-text {
+            font-size: 68px;
+            width: 47.5%;
+            max-width: 570px;
+            min-width: 435px;
+            color: $white;
+        }
+
+        .sub-text {
+            color: $orange;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+    }
+
+    &-footer {
+        width: 100%;
+        @include setFlex(space-between, flex-end, row);
+        color: $gray;
+        opacity: .7;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        font-size: 10px;
+        padding-left: 4.6%;
+
+        .subway {
+            border: 1px solid $orange;
+            @include circleDrow(15px);
+            display: inline-block;
+            position: relative;
+
+            &::before {
+                position: absolute;
+                left: 2px;
+                top: 1px;
+                @include setText($fontPhone, 10, 550);
+                font-style: normal;
+                content: 'M';
+                color: $orange;
+            }
+        }
+
+        .address {
+            width: 38%;
+            min-width: 308px;
+            @include setFlex(space-between, flex-start, row);
+
+
+            &-item {
+                @include setFlex(flex-start, center, row);
+
+                span {
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}
+
+
+.navBar {
+    @include circleDrow(8px);
+    background-color: $gray;
+    transition: all .4s ease;
+
+    &:hover {
+        background-color: $navBar;
+    }
+}
+
+.checked {
+    background-color: $navBar;
+}
+
+.icon-circle {
+    border: 1px solid #757575;
+    @include circleDrow(30px);
+    margin-top: 2px;
+    grid-area: i;
+}
+
+.info {
+    font-style: normal;
+    @include setText($fontPhone, 14px, normal);
+    padding: 1px;
+    height: 43px;
+    width: 233px;
+    left: 15%;
+    top: 0px;
+    position: relative;
+    @include setFlex(space-between, flex-start, row);
+}
+
+/*NAVIGATION*/
+
+nav {
+    z-index: 40;
+    top: 20px;
+    width: 60px;
+    height: 75vh;
+    @include setFlex(space-between, flex-start, column);
+    position: fixed;
+    padding: 20px 0 10px 25px;
+
+    .nav-arrows {
+        width: 10px;
+        height: 60px;
+        @include setFlex(space-between, center, column);
+
+        .left {
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.checkedNav {
+    background-color: $orange;
+    position: relative;
+
+    &::after {
+        opacity: 0.5;
+        position: absolute;
+        border: 0.5px solid $orange;
+        content: "";
+        @include circleDrow(20px);
+        background-color: $gray;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        @include circleDrow(30px);
+        border: 1px solid $gray;
+    }
+
+}
+
+.galary {
+    background-color: $white;
+
+    .tree {
+        top: 15%;
+        background-image: url('/svg/NYtree.png');
+        position: absolute;
+        background-size: contain;
+        width: 373px;
+        height: 457px;
+    }
+
+    .navigation {
+        background-color: $white;
+        padding-right: 50px;
+        width: 307px;
+
+        .navBar:hover {
+            background-color: $orange;
+        }
+    }
+
+    .tabs {
+        z-index: 30;
+        bottom: 103px;
+        width: 45%;
+        height: 103px;
+        background-color: $white;
+    }
+
+    .tab {
+        width: 40%;
+        text-align: center;
+
+        &:first-child {
+            width: 60%;
+        }
+
+        &-title {
+            @include setText($fontPhone, 10px, 600);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 9px 0 9px 0;
+            background-color: #F1F1F1;
+            display: block;
+            width: 100%;
+
+            &.first {
+                text-align: right;
+                padding-right: 54px;
+            }
+        }
+
+        &-content {
+            height: 74px;
+            padding-left: 40px;
+        }
+    }
+
+
+    .tab :checked+.tab-title {
+        background-color: $white;
+        color: $orange;
+    }
+
+    .wrapper {
+        height: 100%;
+    }
+
+    .photoes {
+        width: 80vw;
+        height: 100%;
+        top: 0;
+        left: 20vw;
+        position: relative;
+
+        .photo-display {
+            position: absolute;
+            right: 0;
+            width: 95%;
+            height: 87%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .photo-query {
+            z-index: 15;
+            width: 65%;
+            @include setFlex(space-between, center, row);
+            height: 14%;
+            right: 0;
+            background-color: $galaryBackground;
+            position: absolute;
+            bottom: 0px;
+            background-color: $galaryBackground;
+        }
+
+        .photo {
+            width: 18%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+    }
+}
+
+.wrapper.clubRes {
+    display: none;
+}
+
+.rar {
+    background-color: blue;
+}
+
+.galaryChecked {
+    background-color: $orange;
+}
+
+.photo.checked {
+    transform: scale(1.4);
+    margin: 0 30px;
+}
