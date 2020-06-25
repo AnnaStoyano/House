@@ -1,12 +1,26 @@
 window.onload = function () {
-
+    callRequest();
     sliderNavigation();
     pagesNavigation();
-
-    //  let gallaryNav = navigation(window,pages,rightNav,leftNav,navBar2,false,'checkedNav');
     gallaryNavigation();
+
 }
 
+function callRequest(){
+    let phoneAction = document.querySelectorAll('.phone-action');
+    let form = document.querySelector('.form');
+
+    phoneAction.forEach(item=>{
+        item.addEventListener('click',function(){
+            form.style.display='block';
+        })
+
+        let close = form.querySelector('.close');
+        close.addEventListener('click',function(){
+            form.style.display='none';       
+        })
+    })
+} 
 
 function gallaryNavigation() {
     let navBar = document.querySelectorAll('.galary .navigation');
@@ -90,6 +104,8 @@ function pagesNavigation() {
 
     let pageNav = navigation(window, pages, rightNav, leftNav, navBar2, false, 'checkedNav');
 }
+
+
 
 function navigation(slider, slides, right, left, navBar, dir, checkedClass, callBack) {
     let checked = Array.from(navBar).find((item) => item.classList.contains(checkedClass));

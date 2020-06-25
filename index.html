@@ -11,6 +11,19 @@
 
 <body>
     <script defer src="script.js"></script>
+    <div class="form">
+        <div class="form-img"></div>
+        <div class="form-content">
+            <h1 class="main-text">Заказать звонок</h1>
+            <form action="" class="request-call">
+                <input type="text" name="name" class="request-call-input" placeholder="Имя:*">
+                <input type="text" name="phone" class="request-call-input" placeholder="Телефон:*">
+                <input type="submit" class='btn' value="Oтправить">
+            </form>
+            <button class="close"></button>
+        </div>
+    </div>
+
     <section class="wrapper slider">
         <div class='slides'>
             <input type="radio" name='sliderRadio' checked id='r1'>
@@ -35,10 +48,11 @@
                     <span class="slide-counter-unchecked">02</span>
                 </div>
                 <div class="slide-main">
-                    <div class="sub-text">Жилой комплекс КЛАБ РЕЗИДЕНС</div>
-                    <div class="main-text">
+                    <!--<div class="sub-text">Жилой комплекс КЛАБ РЕЗИДЕНС</div>-->
+                    <h3 class="sub-text">Жилой комплекс КЛАБ РЕЗИДЕНС</h3>
+                    <h1 class="main-text">
                         Квартиры уже в продаже!
-                    </div>
+                    </h1>
                     <input type="button" value="О КОМПЛЕКСЕ" class="btn">
                 </div>
                 <div class="slide-footer">
@@ -78,10 +92,10 @@
                     <span class="slide-counter-unchecked">01</span>
                 </div>
                 <div class="slide-main">
-                    <div class="sub-text">Это две строчки текста на семь слов</div>
-                    <div class="main-text">
+                    <h3 class="sub-text">Это две строчки текста на семь слов</h3>
+                    <h1 class="main-text">
                         Квартиры уже в продаже!
-                    </div>
+                    </h1>
                     <input type="button" value="О КОМПЛЕКСЕ" class="btn">
                 </div>
                 <div class="slide-footer">
@@ -147,7 +161,7 @@
                     <img src="/svg/gallary/room.jpg" class="photo" alt="House2">
                     <img src="/svg/gallary/modern.jpg" class="photo" alt="House1">
                     <img src="/svg/gallary/bath.jpg" class="photo" alt="House1">
-                </div>     
+                </div>
             </div>
         </div>
         <div class="tabs">

@@ -2,6 +2,78 @@
 @import 'mixin';
 @import 'setting';
 
+.form {
+    background-color: $white;
+    width: 65%;
+    top: 10%;
+    left: 20%;
+    display: none;
+    z-index: 100;
+    max-width: 800px;
+    min-width: 350px;
+    padding: 20px;
+    position: absolute;
+
+    &-content {
+        position: relative;
+        z-index: 110;
+        border: 1px solid $orange;
+        padding: 52px 47px;
+        width: 100%;
+
+        .main-text {
+            width: 50%;
+        }
+    }
+
+    &-img {
+        @include sliderConfig("../svg/gallary/House1.png");
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: 90;
+        height: 100%;
+    }
+
+    .close {
+        @include circleDrow(42px);
+        background: rgba($color: $black, $alpha: .3);
+        border: 0.5px solid #A68E52;
+        outline: none;
+        position: absolute;
+        right: 17px;
+        top: 18px;
+        cursor: pointer;
+        &:after {
+            padding-top: 2px;
+            content: url('/svg/Union.png');
+            border: 1px solid $white;
+            @include circleDrow(29px);
+            background-color: $white;
+            position: absolute;
+        }
+    }
+}
+
+.request-call {
+    margin-top: 30px;
+    @include setFlex(space-between, flex-start, column);
+
+    &-input {
+        border: none;
+        padding-bottom: 10px;
+        outline: none;
+        border-bottom: 1px solid $orange;
+        -webkit-box-shadow: inset 0 0 0 50px $white;
+        -webkit-text-fill-color: #000;
+
+        &+& {
+            margin-top: 30px;
+        }
+
+    }
+}
+
 .slider {
     overflow: hidden;
     z-index: 50;
@@ -11,12 +83,6 @@
         top: -125px;
         left: 110px;
     }
-}
-
-.slides {
-    width: 200%;
-    height: 100%;
-    display: flex;
 }
 
 .slide {
@@ -159,16 +225,14 @@
         padding-left: 4.6%;
 
         .main-text {
-            font-size: 68px;
             width: 47.5%;
             max-width: 570px;
-            min-width: 435px;
             color: $white;
+            min-width: 450px;
         }
 
         .sub-text {
             color: $orange;
-            font-size: 14px;
             margin-bottom: 8px;
         }
     }

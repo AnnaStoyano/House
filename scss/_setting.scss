@@ -18,7 +18,19 @@ input[type='radio'] {
     visibility: hidden;
 }
 
-::-webkit-scrollbar-thumb{
+
+.main-text {
+    font-size: 68px;
+    font-weight: 400;
+    display: block;
+}
+
+.sub-text {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+::-webkit-scrollbar-thumb {
     background-color: $orange;
     border-radius: 30px;
 }
@@ -54,8 +66,14 @@ section {
     }
 }
 
+.slides {
+    width: 200%;
+    height: 100%;
+    display: flex;
+}
+
 .navigation {
-    @include setFlex(space-between,flex-start,row);
+    @include setFlex(space-between, flex-start, row);
     position: relative;
 
     .right {
@@ -63,28 +81,25 @@ section {
     }
 }
 
-
-
 .tabs {
     position: relative;
-    display:  flex;
+    display: flex;
 }
-   
-   .tab-content {
+
+.tab-content {
     left: 0;
     position: absolute;
     width: 100%;
 
     display: none;
-   }
-   .tab :checked + .tab-title {
+}
+
+.tab :checked+.tab-title {
     position: relative;
     z-index: 1;
-   }
-   .tab :checked ~ .tab-content {
-    @include setFlex(center,center,row);
-   } 
-   
+}
 
-
+.tab :checked~.tab-content {
+    @include setFlex(center, center, row);
+}
 
