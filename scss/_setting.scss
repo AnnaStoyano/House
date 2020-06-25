@@ -8,6 +8,10 @@ a {
     text-decoration: none;
 }
 
+label{
+    display: inline-block;
+}
+
 ::-webkit-scrollbar {
     width: 6px;
     background-color: $gray;
@@ -17,7 +21,6 @@ input[type='radio'] {
     position: absolute;
     visibility: hidden;
 }
-
 
 .main-text {
     font-size: 68px;
@@ -86,6 +89,15 @@ section {
     display: flex;
 }
 
+.subtabs{
+    width: 100%;
+    display: none;
+    &.checked{
+        display: flex;
+        background-color: none;
+    }
+}
+
 .tab-content {
     left: 0;
     position: absolute;
@@ -103,3 +115,11 @@ section {
     @include setFlex(center, center, row);
 }
 
+.tab-title {
+    @include setText($fontPhone, 10px, 600);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 12px 0 12px 0;
+    background-color: #F1F1F1;
+    width: 100%;
+}

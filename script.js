@@ -3,12 +3,40 @@ window.onload = function () {
     sliderNavigation();
     pagesNavigation();
     gallaryNavigation();
+    salesTabs();
+}
 
+function salesTabs(){
+    let tabs = document.querySelector('.sales .tabs');
+    let subTabs = Array.from(document.querySelectorAll('.sales .subtabs'));
+    tabs.addEventListener('click',function(e){
+        let tab = e.target.parentElement;
+        if(e.target.classList.contains('level1')){
+            let checked = subTabs.find(item=>item.classList.contains('checked'));
+            if(checked){
+                checked.classList.remove('checked');
+            }
+            tab.nextElementSibling.classList.add('checked');
+        }
+    })
 }
 
 function callRequest(){
     let phoneAction = document.querySelectorAll('.phone-action');
     let form = document.querySelector('.form');
+    form.addEventListener('submit',function(e){
+        e.preventDefault();
+
+        let elements = document.forms.call.elements;
+
+        let user = {
+            name:elements['name'].value,
+            phone:elements['phone'].value,
+        };
+
+        elements['name'].value = '';
+        elements['phone'].value = '';
+    });
 
     phoneAction.forEach(item=>{
         item.addEventListener('click',function(){
