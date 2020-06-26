@@ -6,14 +6,47 @@ window.onload = function () {
     salesTabs();
 }
 
-function salesTabs(){
+function setInformationSales(){
+    let allFlats = [];
+    let OneRoomFlats = [];
+    OneRoomFlats.push({square:'36.05м2',rooms:1,},{square:'36.15м2',rooms:1,},{square:'37м2',rooms:1,},{square:'37.03м2',rooms:1,}
+    ,{square:'37.05м2',rooms:1,},{square:'37.10м2',rooms:1,});
+    let TwoRoomFlats = [];
+    TwoRoomFlats.push({square:'38.05м2',rooms:2,},{square:'38.15м2',rooms:2,},{square:'40м2',rooms:2,},{square:'40.03м2',rooms:2,}
+    ,{square:'42.05м2',rooms:2,},{square:'44.10м2',rooms:2,});
+    let ThreeRoomFlats = [];
+    ThreeRoomFlats.push({square:'50.05м2',rooms:3,},{square:'51.15м2',rooms:3,},{square:'53м2',rooms:3,},{square:'53.03м2',rooms:3,}
+    ,{square:'54.05м2',rooms:3,},{square:'54.10м2',rooms:3,});
+    allFlats.push(OneRoomFlats,TwoRoomFlats,ThreeRoomFlats);
+    return allFlats;
+}
+
+function addSubTabs() {
+    let allFlats = setInformationSales();
+    let tabs = document.querySelectorAll('.sales .tab.level1');
+    tabs.forEach(function (item, index) {
+        let subtabs = item.nextElementSibling;
+        if (subtabs && subtabs.classList.contains('subtabs')) {
+            for (let i = 0; i < allFlats[index].length;i++) {
+                let tab = document.createElement('div');
+                tab.classList.add('tab');
+                subtabs.insertAdjacentElement('beforeend', tab);
+                tab.insertAdjacentHTML('afterbegin', `<input type="radio" id="tabSales${index}${i}" name="tab-sale${index}">
+                <label for="tabSales${index}${i}" class="tab-title">${allFlats[index][i].square}</label>`)
+            }
+        }
+    })
+}
+
+function salesTabs() {
+    addSubTabs();
     let tabs = document.querySelector('.sales .tabs');
     let subTabs = Array.from(document.querySelectorAll('.sales .subtabs'));
-    tabs.addEventListener('click',function(e){
+    tabs.addEventListener('click', function (e) {
         let tab = e.target.parentElement;
-        if(e.target.classList.contains('level1')){
-            let checked = subTabs.find(item=>item.classList.contains('checked'));
-            if(checked){
+        if (e.target.classList.contains('level1')) {
+            let checked = subTabs.find(item => item.classList.contains('checked'));
+            if (checked) {
                 checked.classList.remove('checked');
             }
             tab.nextElementSibling.classList.add('checked');
@@ -21,34 +54,34 @@ function salesTabs(){
     })
 }
 
-function callRequest(){
+function callRequest() {
     let phoneAction = document.querySelectorAll('.phone-action');
     let form = document.querySelector('.form');
-    form.addEventListener('submit',function(e){
+    form.addEventListener('submit', function (e) {
         e.preventDefault();
 
         let elements = document.forms.call.elements;
 
         let user = {
-            name:elements['name'].value,
-            phone:elements['phone'].value,
+            name: elements['name'].value,
+            phone: elements['phone'].value,
         };
 
         elements['name'].value = '';
         elements['phone'].value = '';
     });
 
-    phoneAction.forEach(item=>{
-        item.addEventListener('click',function(){
-            form.style.display='block';
+    phoneAction.forEach(item => {
+        item.addEventListener('click', function () {
+            form.style.display = 'block';
         })
 
         let close = form.querySelector('.close');
-        close.addEventListener('click',function(){
-            form.style.display='none';       
+        close.addEventListener('click', function () {
+            form.style.display = 'none';
         })
     })
-} 
+}
 
 function gallaryNavigation() {
     let navBar = document.querySelectorAll('.galary .navigation');
@@ -57,14 +90,14 @@ function gallaryNavigation() {
     tabNavigation("galary", 'clubHouse', photosQuery[0].children, display[0]);
     tabNavigation("galary", 'clubRes', photosQuery[1].children, display[1]);
 
-    for(let index=0; index<photosQuery.length;index++){
-        let arrImg=(Array.from(photosQuery[index].children));
-        let navBars = Array.from(navBar[index].children).filter(item=> item.tagName=='LABEL');
-        photosQuery[index].addEventListener('click',function(e){
-            let targetImgId = arrImg.findIndex(item=> item==e.target);
-            let checkedId = arrImg.findIndex(item=> item.classList.contains('checked'));
-        
-            if(e.target.tagName === 'IMG'){
+    for (let index = 0; index < photosQuery.length; index++) {
+        let arrImg = (Array.from(photosQuery[index].children));
+        let navBars = Array.from(navBar[index].children).filter(item => item.tagName == 'LABEL');
+        photosQuery[index].addEventListener('click', function (e) {
+            let targetImgId = arrImg.findIndex(item => item == e.target);
+            let checkedId = arrImg.findIndex(item => item.classList.contains('checked'));
+
+            if (e.target.tagName === 'IMG') {
                 display[index].style.backgroundImage = `url(${e.target.src})`;
                 arrImg[targetImgId].classList.add('checked');
                 arrImg[checkedId].classList.remove('checked');
@@ -82,7 +115,7 @@ function tabNavigation(section, div, photosQuery, display) {
     let tabsWrapper = document.querySelector(`.${section} .tabs`);
     let tabs = tabsWrapper.children;
     let navigationW = document.querySelector(`.${section} .navigation.${div}`);
-    let navBar = Array.from(navigationW.children).filter(item=> item.tagName=='LABEL');
+    let navBar = Array.from(navigationW.children).filter(item => item.tagName == 'LABEL');
 
     let photos = Array.from(document.querySelector('.photoes').children);
     let inputs = Array.from(tabs).map(item => {
