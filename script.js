@@ -6,17 +6,21 @@ window.onload = function () {
     salesTabs();
 }
 
+/*Imitation of Data Base*/ 
 function setInformationSales(){
     let allFlats = [];
     let OneRoomFlats = [];
-    OneRoomFlats.push({square:'36.05м2',rooms:1,},{square:'36.15м2',rooms:1,},{square:'37м2',rooms:1,},{square:'37.03м2',rooms:1,}
-    ,{square:'37.05м2',rooms:1,},{square:'37.10м2',rooms:1,});
+    OneRoomFlats.push({totalSquare:'36.05м2',rooms:1,building:15,floor:4,liveSquare:'36.05м2',bedroom:'14.56м2',kitchen:'17.34м2',rest:'14.56м2',bathroom:'17.34м2',photo:'/svg/flatTemplates/flat13605m2.png'},{totalSquare:'36.15м2',rooms:1,building:15,floor:5,liveSquare:'36.15м2',bedroom:'12.56м2',kitchen:'17.34м2',rest:'15.56м2',bathroom:'18.4м2',photo:'/svg/flatTemplates/flat13605m2.png'},
+    {totalSquare:'36.25м2',rooms:1,building:10,floor:4,liveSquare:'36.25м2',bedroom:'14.26м2',kitchen:'17.34м2',rest:'14.56м2',bathroom:'17.34м2',photo:'/svg/flatTemplates/flat13605m2.png'},{totalSquare:'40.05м2',rooms:1,building:45,floor:4,liveSquare:'40.05м2',bedroom:'15.56м2',kitchen:'16.34м2',rest:'17.56м2',bathroom:'17.34м2',photo:'/svg/flatTemplates/flat13605m2.png'}
+    ,{totalSquare:'40.25м2',rooms:1,building:7,floor:6,liveSquare:'40.25м2',bedroom:'15.56м2',kitchen:'18.34м2',rest:'13.56м2',bathroom:'17.34м2',photo:'/svg/flatTemplates/flat13605m2.png'},{totalSquare:'41.95м2',rooms:1,building:10,floor:9,liveSquare:'36.05м2',bedroom:'14.96м2',kitchen:'17.34м2',rest:'19.56м2',bathroom:'15.34м2',photo:'/svg/flatTemplates/flat13605m2.png'});
     let TwoRoomFlats = [];
-    TwoRoomFlats.push({square:'38.05м2',rooms:2,},{square:'38.15м2',rooms:2,},{square:'40м2',rooms:2,},{square:'40.03м2',rooms:2,}
-    ,{square:'42.05м2',rooms:2,},{square:'44.10м2',rooms:2,});
+    TwoRoomFlats.push({totalSquare:'46.05м2',rooms:2,building:5,floor:3,liveSquare:'46.05м2',bedroom:'14.56м2',kitchen:'17.34м2',rest:'14.56м2',bathroom:'17.34м2',photo:'/svg/flatTemplates/flat13605m2.png'},{totalSquare:'46.15м2',rooms:1,building:15,floor:5,liveSquare:'46.15м2',bedroom:'12.56м2',kitchen:'17.34м2',rest:'15.56м2',bathroom:'18.4м2',photo:'/svg/flatTemplates/flat13605m2.png'},
+    {totalSquare:'49.5м2',rooms:1,building:10,floor:4,liveSquare:'49.5м2',bedroom:'14.26м2',kitchen:'17.34м2',rest:'14.56м2',bathroom:'17.34м2',photo:'/svg/flatTemplates/flat13605m2.png'},{totalSquare:'20.25м2',rooms:1,building:45,floor:4,liveSquare:'50.25м2',bedroom:'15.56м2',kitchen:'16.34м2',rest:'17.56м2',bathroom:'17.34м2',photo:'/svg/flatTemplates/flat13605m2.png'}
+    ,{totalSquare:'52.25м2',rooms:1,building:7,floor:6,liveSquare:'52.25м2',bedroom:'15.56м2',kitchen:'18.34м2',rest:'13.56м2',bathroom:'17.34м2',photo:'/svg/flatTemplates/flat13605m2.png'},{totalSquare:'54.95м2',rooms:1,building:10,floor:9,liveSquare:'54.05м2',bedroom:'14.96м2',kitchen:'17.34м2',rest:'19.56м2',bathroom:'15.34м2',photo:'/svg/flatTemplates/flat13605m2.png'});
     let ThreeRoomFlats = [];
-    ThreeRoomFlats.push({square:'50.05м2',rooms:3,},{square:'51.15м2',rooms:3,},{square:'53м2',rooms:3,},{square:'53.03м2',rooms:3,}
-    ,{square:'54.05м2',rooms:3,},{square:'54.10м2',rooms:3,});
+    ThreeRoomFlats.push({totalSquare:'56.05м2',rooms:2,building:5,floor:3,liveSquare:'56.05м2',bedroom:'14.56м2',kitchen:'17.34м2',rest:'14.56м2',bathroom:'17.34м2',photo:'/svg/flatTemplates/flat13605m2.png'},{totalSquare:'57.15м2',rooms:1,building:15,floor:5,liveSquare:'57.15м2',bedroom:'12.56м2',kitchen:'17.34м2',rest:'15.56м2',bathroom:'18.4м2',photo:'/svg/flatTemplates/flat13605m2.png'},
+    {totalSquare:'59.5м2',rooms:1,building:10,floor:4,liveSquare:'59.5м2',bedroom:'14.26м2',kitchen:'17.34м2',rest:'14.56м2',bathroom:'17.34м2',photo:'/svg/flatTemplates/flat13605m2.png'},{totalSquare:'60.25м2',rooms:1,building:45,floor:4,liveSquare:'60.25м2',bedroom:'15.56м2',kitchen:'16.34м2',rest:'17.56м2',bathroom:'17.34м2',photo:'/svg/flatTemplates/flat13605m2.png'}
+    );
     allFlats.push(OneRoomFlats,TwoRoomFlats,ThreeRoomFlats);
     return allFlats;
 }
@@ -25,17 +29,68 @@ function addSubTabs() {
     let allFlats = setInformationSales();
     let tabs = document.querySelectorAll('.sales .tab.level1');
     tabs.forEach(function (item, index) {
-        let subtabs = item.nextElementSibling;
+        let subtabs = item.nextElementSibling;    
+
         if (subtabs && subtabs.classList.contains('subtabs')) {
             for (let i = 0; i < allFlats[index].length;i++) {
                 let tab = document.createElement('div');
                 tab.classList.add('tab');
                 subtabs.insertAdjacentElement('beforeend', tab);
-                tab.insertAdjacentHTML('afterbegin', `<input type="radio" id="tabSales${index}${i}" name="tab-sale${index}">
-                <label for="tabSales${index}${i}" class="tab-title">${allFlats[index][i].square}</label>`)
+                isChecked = '';
+                if(i == 0){
+                    isChecked = 'checked';
+                }
+                tab.insertAdjacentHTML('afterbegin', `<input ${isChecked} type="radio" id="tabSales${index}${i}" name="tab-sale${index}">
+                <label for="tabSales${index}${i}" class="tab-title">${allFlats[index][i].totalSquare}</label>`);
             }
         }
     })
+    fillSalesCard(allFlats);
+}
+
+function fillSalesCard(allFlats){
+    let flatInfo = document.querySelectorAll('.flatInfo');  
+    let subtabs=document.querySelectorAll('.subtabs');
+    let imges = document.querySelectorAll('.flatTemplate');
+    let elementIndex,arrIndex,column1,column2;
+    subtabs.forEach(item=>{
+        item.addEventListener('click',function(e){
+            target = e.target.tagName=='LABEL' ? e.target:null;
+            if(target){
+                elementIndex = target.htmlFor.slice(-1);
+                arrIndex = target.htmlFor.slice(-2,-1);
+                flatTitle = `Квартира ${allFlats[arrIndex][elementIndex].totalSquare}`
+                imges[arrIndex].src = allFlats[arrIndex][elementIndex].photo;
+                flatInfo[arrIndex].children[0].innerHTML = flatTitle;
+                column1 = flatInfo[arrIndex].children[1].children[0];
+                column2 = flatInfo[arrIndex].children[1].children[1];
+                column1.innerHTML = '';
+                column2.innerHTML = '';
+                addColumnItem('Будинок',allFlats[arrIndex][elementIndex].building,column1);
+                addColumnItem('Поверх',allFlats[arrIndex][elementIndex].floor,column1);
+                addColumnItem('Житлова площа',allFlats[arrIndex][elementIndex].liveSquare,column1);
+                addColumnItem('Загальна площа',allFlats[arrIndex][elementIndex].totalSquare,column1);
+
+                addColumnItem('Спальна',allFlats[arrIndex][elementIndex].bedroom,column2);
+                addColumnItem('Кухня',allFlats[arrIndex][elementIndex].bathroom,column2);
+                addColumnItem('Передпокій',allFlats[arrIndex][elementIndex].rest,column2);
+                addColumnItem('Санвузол',allFlats[arrIndex][elementIndex].bathroom,column2);
+
+            }
+        })
+    })
+}
+
+function addColumnItem(title,value,column){
+    /* <div class="column-item">
+            <span class="column-item-title">Dom</span>
+            <span class="column-item-value">235m2</span>
+        </div> */
+    let columnItem=document.createElement('div');
+    columnItem.classList.add("column-item");
+    columnItem.insertAdjacentHTML('afterBegin',`<span class="column-item-title">${title}</span>
+                                                <span class="column-item-value">${value}</span>`);
+    column.insertAdjacentElement('beforeEnd',columnItem);
 }
 
 function salesTabs() {

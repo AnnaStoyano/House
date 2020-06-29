@@ -374,11 +374,17 @@ nav {
 
     .navigation {
         background-color: $white;
-        padding-right: 50px;
-        width: 307px;
-
-        .navBar:hover {
+        padding-right: -30px;
+        .navBar:hover, .navBar.checked {
             background-color: $orange;
+        }
+
+        .navBar{
+            margin-right: 25px;
+        }
+
+        .left{
+            margin: 0 20px;
         }
     }
 
@@ -476,7 +482,7 @@ nav {
 
 .sales {
     background: linear-gradient(180deg, rgba(22, 27, 33, 0) 75.93%, #161B21 99.94%), url('/svg/sales-bg.png');
-    padding: 3% 9.1% 3% 18%;
+    padding: 1.6% 9.1% 2% 18%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -486,8 +492,9 @@ nav {
     }
 
     .tabs{
+        margin-top: 25px;
         width: 90%;
-        height: 70vh;
+        height: 77.5vh;
         background: #FFFFFF;
         position: relative;
         box-shadow: 0px 8px 20px rgba(33, 34, 36, 0.1);
@@ -497,6 +504,94 @@ nav {
         width: 25%;
         &-title{
             text-align: center;
+        }
+        &-content{
+            padding: 42px 54px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .flatTemplate{
+        position: absolute;
+        left:54px;
+        top:42px;
+        
+    }
+
+    .flatInfo{
+        width: 48%;
+        height: 38%;
+        padding: 20px 30px;
+        top: 7%;
+        right: 5%;
+        background: #FFFFFF;
+        box-shadow: 0px 8px 20px rgba(19, 20, 20, 0.05);
+        position: absolute;
+
+        &-title{
+            @include setText('Cormorant',30px,500);
+        }
+        &-detailed{
+            margin-top: 20px;
+            @include setFlex(space-between,center,row);
+            width: 100%;
+            .column1,.column2{
+                width: 40%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                position: relative;
+            }
+
+            .column1::after{
+                content: "";
+                position: absolute;
+                width:1px;
+                height: 100%;
+                top:0;
+                left: 125%;
+                background-color: $gray;
+            }
+
+            .column-item{
+                @include setFlex(space-between,center,row);
+                width: 100%;
+                @include setText($fontPhone,12px,400);
+
+                &-title{
+                    color: $navBar;
+                    text-align: left;
+                }
+                &-value{
+                    padding-left: 1px;
+                    width: 45px;
+                    color:$black;
+                    text-align: left;
+                }
+            }
+            .column-item + .column-item{
+                margin-top: 8px;
+            }
+        }
+    }
+
+    .subtabsNav{
+        position: relative;
+        z-index: 40;
+        top:40%;
+        left: 17%;
+        .navBar:hover, .navBar.checked {
+            background-color: $orange;
+        }
+
+        .navBar{
+            margin-right: 25px;
+        }
+
+        .left{
+            margin: 0 20px;
         }
     }
 
