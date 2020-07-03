@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.min.css">
-    <link rel="stylesheet" href="https://material.io/resources/icons/?search=loca&icon=place&style=baseline">
-    <title>Document</title>
+    <title>House</title>
 </head>
 
 <body>
@@ -25,10 +24,7 @@
     </div>
 
     <section class="wrapper slider">
-        <div class='slides'>
-            <input type="radio" name='sliderRadio' checked id='r1'>
-            <input type="radio" name='sliderRadio' id='r2'>
-            <div class="slide slide-1">
+            <div class="slide slide-1 current" id="slide-1">
                 <div class="slide-header">
                     <img src="./svg/Club_residence1.png" alt="Club_residence" class="logo">
                     <div class="info">
@@ -72,7 +68,7 @@
                 </div>
             </div>
 
-            <div class="slide slide-2">
+            <div class="slide slide-2" id="slide-2">
                 <div class="slide-header">
                     <div class="logo">дом</div>
                     <div class="info">
@@ -116,10 +112,10 @@
             </div>
         </div>
         <div class="navigation">
-            <label for="r1" class="navBar checked"></label>
-            <label for="r2" class="navBar "></label>
-            <img src="./svg/Vector30.png" class="left">
-            <img src="./svg/Vector30.png" class="right">
+            <a class="navBar checked"></a>
+            <a class="navBar"></a>
+            <button  class="left"></button>
+            <button  class="right"></button>
         </div>
     </section>
     <nav>
@@ -181,8 +177,8 @@
                         <label for="rch3" class="navBar clubHouse"></label>
                         <label for="rch4" class="navBar clubHouse"></label>
                         <label for="rch5" class="navBar clubHouse"></label>
-                        <img src="/svg/Vector28.png" class="left">
-                        <img src="/svg/Vector28.png" class="right">
+                        <img src="./svg/Vector28.png" class="left">
+                        <img src="./svg/Vector28.png" class="right">
                     </div>
                 </div>
             </div>
@@ -364,50 +360,50 @@
                 <input type="radio" id="tabSales4" name="tab-sale">
                 <label for="tabSales4" class="level1 tab-title">З терасами</label>
                 <div class="tab-content">
-                    
-                       <input type="radio" name="slidesSales3" checked id="slidesSales1">
-                        <input type="radio" name="slidesSales3" id="slidesSales2">
-                        <input type="radio" name="slidesSales3" id="slidesSales3">
-                        <input type="radio" name="slidesSales3" id="slidesSales4">
-                        <input type="radio" name="slidesSales3" id="slidesSales5">
 
-                        <div class="navigation subtabsNav">
-                            <label for="slidesSales1" class="navBar checked"></label>
-                            <label for="slidesSales2" class="navBar"></label>
-                            <label for="slidesSales3" class="navBar"></label>
-                            <label for="slidesSales4" class="navBar"></label>
-                            <label for="slidesSales5" class="navBar"></label>
-                            <img src="./svg/Vector28.png" class="left">
-                            <img src="./svg/Vector28.png" class="right">
-                        </div>
+                    <input type="radio" name="slidesSales3" checked id="slidesSales1">
+                    <input type="radio" name="slidesSales3" id="slidesSales2">
+                    <input type="radio" name="slidesSales3" id="slidesSales3">
+                    <input type="radio" name="slidesSales3" id="slidesSales4">
+                    <input type="radio" name="slidesSales3" id="slidesSales5">
+
+                    <div class="navigation subtabsNav">
+                        <label for="slidesSales1" class="navBar checked"></label>
+                        <label for="slidesSales2" class="navBar"></label>
+                        <label for="slidesSales3" class="navBar"></label>
+                        <label for="slidesSales4" class="navBar"></label>
+                        <label for="slidesSales5" class="navBar"></label>
+                        <img src="./svg/Vector28.png" class="left">
+                        <img src="./svg/Vector28.png" class="right">
+                    </div>
 
                 </div>
             </div>
 
-                <div class="subtabs">
-                    <div class="tab">
-                        <input type="radio" id="tabSales31" name="tab-sale1">
-                        <label for="tabSales31" class="tab-title">36.05м2</label>
-                        <div class="tab-content sub">
-                        </div>
-                    </div>
-                    <div class="tab">
-                        <input type="radio" id="tabSales12" name="tab-sale1">
-                        <label for="tabSales12" class="tab-title">36.05м2</label>
-                        <div class="tab-content sub">Hello2</div>
-                    </div>
-                    <div class="tab">
-                        <input type="radio" id="tabSales13" name="tab-sale1">
-                        <label for="tabSales13" class="tab-title">36.05м2</label>
-                        <div class="tab-content sub"></div>
-                    </div>
-                    <div class="tab">
-                        <input type="radio" id="tabSales14" name="tab-sale1">
-                        <label for="tabSales14" class="tab-title">36.05м2</label>
-                        <div class="tab-content sub"></div>
+            <div class="subtabs">
+                <div class="tab">
+                    <input type="radio" id="tabSales31" name="tab-sale1">
+                    <label for="tabSales31" class="tab-title">36.05м2</label>
+                    <div class="tab-content sub">
                     </div>
                 </div>
+                <div class="tab">
+                    <input type="radio" id="tabSales12" name="tab-sale1">
+                    <label for="tabSales12" class="tab-title">36.05м2</label>
+                    <div class="tab-content sub">Hello2</div>
+                </div>
+                <div class="tab">
+                    <input type="radio" id="tabSales13" name="tab-sale1">
+                    <label for="tabSales13" class="tab-title">36.05м2</label>
+                    <div class="tab-content sub"></div>
+                </div>
+                <div class="tab">
+                    <input type="radio" id="tabSales14" name="tab-sale1">
+                    <label for="tabSales14" class="tab-title">36.05м2</label>
+                    <div class="tab-content sub"></div>
+                </div>
             </div>
+        </div>
     </section>
 </body>
 

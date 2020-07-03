@@ -1,6 +1,7 @@
 @import "config";
 @import 'mixin';
 @import 'setting';
+@import 'media';
 
 .form {
     background-color: $white;
@@ -27,7 +28,8 @@
     }
 
     &-img {
-        @include sliderConfig("../svg/gallary/House1.png");
+        width: 50%;
+        @include imgConfig("../svg/gallary/House1.png");
         position: absolute;
         right: 0;
         top: 0;
@@ -44,6 +46,7 @@
         right: 17px;
         top: 18px;
         cursor: pointer;
+
         &:after {
             padding-top: 2px;
             content: url('/svg/Union.png');
@@ -75,41 +78,45 @@
 }
 
 .slider {
-    overflow: hidden;
     z-index: 50;
-
+    overflow: hidden;
     .navigation {
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
         width: 205px;
-        top: -125px;
-        left: 110px;
+        top:82%;
+        z-index: 60;
     }
 }
 
+
 .slide {
-    transition: all .8s ease;
+    transition: all 1s ease-in-out;
     height: 100%;
+    width: 100%;
     @include setFlex(space-between, flex-start, column);
-    position: relative;
-    padding: 22px 45px;
+    position: absolute;
+    opacity: 0;
 
     &-1 {
-        @include sliderConfig("../svg/header-bg1.png");
+        @include imgConfig("../svg/header-bg1.png");
     }
 
     &-2 {
-        @include sliderConfig("../svg/header-bg2.png");
-
-        .logo {
-            width: 69px;
-            @include setText($fontLogo, 24.5753px, 500);
+        @include imgConfig("../svg/header-bg2.png");
+        .logo{
+            @include setText($fontLogo, 26px, 500);
             color: $gray;
-            position: relative;
+            width: 69px;
+            height: 59px;
+            position: absolute;
             text-transform: uppercase;
-            margin-top: 15px;
-
+            margin-top: 20px;
+            
             &::before {
                 position: absolute;
-                top: -15px;
+                top: -20px;
                 @include setFlex(flex-start, center, row);
                 content: 'КЛУБНЫЙ';
                 @include setText($fontSlider, 13.2329px, 500);
@@ -118,8 +125,8 @@
             &::after {
                 content: "";
                 position: absolute;
-                top: 35%;
-                left: 38%;
+                top: 20%;
+                left: 40%;
                 @include circleDrow(3.78px);
                 background-color: $orange;
                 border: 1px solid $orange;
@@ -130,10 +137,16 @@
     &-header {
         display: flex;
         width: 100%;
+        position: relative;
+
+        .logo{
+            width: 10vw;
+            max-width: 69px;
+            position: absolute;
+        }
 
         .phone {
             display: grid;
-            grid-template-columns: 30px 113px;
             grid-template-rows: 1fr 1fr;
             column-gap: 10px;
             grid-template-areas: 'i phone''i info';
@@ -187,8 +200,6 @@
     &-counter {
         width: 1px;
         background-color: $navBar;
-        height: 78px;
-        top: 35%;
         position: absolute;
 
         span {
@@ -223,12 +234,10 @@
 
     &-main {
         padding-left: 4.6%;
-
+        width: 100%;
+        @include setFlex(flex-start, flex-start, column);
         .main-text {
-            width: 47.5%;
-            max-width: 570px;
             color: $white;
-            min-width: 450px;
         }
 
         .sub-text {
@@ -245,7 +254,6 @@
         letter-spacing: 0.05em;
         text-transform: uppercase;
         font-size: 10px;
-        padding-left: 4.6%;
 
         .subway {
             border: 1px solid $orange;
@@ -263,24 +271,24 @@
                 color: $orange;
             }
         }
+    }
 
-        .address {
-            width: 38%;
-            min-width: 308px;
-            @include setFlex(space-between, flex-start, row);
+    .address {
+        width: 38%;
+        min-width: 200px;
+        @include setFlex(space-between, flex-start, row);
 
 
-            &-item {
-                @include setFlex(flex-start, center, row);
+        &-item {
+            @include setFlex(flex-start, center, row);
 
-                span {
-                    margin-left: 10px;
-                }
+            span {
+                margin-left: 10px;
             }
         }
     }
-}
 
+}
 
 .navBar {
     @include circleDrow(8px);
@@ -309,8 +317,6 @@
     @include setText($fontPhone, 14px, normal);
     padding: 1px;
     height: 43px;
-    width: 233px;
-    left: 15%;
     top: 0px;
     position: relative;
     @include setFlex(space-between, flex-start, row);
@@ -375,15 +381,17 @@ nav {
     .navigation {
         background-color: $white;
         padding-right: -30px;
-        .navBar:hover, .navBar.checked {
+
+        .navBar:hover,
+        .navBar.checked {
             background-color: $orange;
         }
 
-        .navBar{
+        .navBar {
             margin-right: 25px;
         }
 
-        .left{
+        .left {
             margin: 0 20px;
         }
     }
@@ -487,11 +495,11 @@ nav {
     background-position: center;
     background-repeat: no-repeat;
 
-    .main-text{
-        color:$black;
+    .main-text {
+        color: $black;
     }
 
-    .tabs{
+    .tabs {
         margin-top: 25px;
         width: 90%;
         height: 77.5vh;
@@ -500,12 +508,14 @@ nav {
         box-shadow: 0px 8px 20px rgba(33, 34, 36, 0.1);
     }
 
-    .tab{
+    .tab {
         width: 25%;
-        &-title{
+
+        &-title {
             text-align: center;
         }
-        &-content{
+
+        &-content {
             padding: 42px 54px;
             position: absolute;
             width: 100%;
@@ -513,14 +523,14 @@ nav {
         }
     }
 
-    .flatTemplate{
+    .flatTemplate {
         position: absolute;
-        left:54px;
-        top:42px;
-        
+        left: 54px;
+        top: 42px;
+
     }
 
-    .flatInfo{
+    .flatInfo {
         width: 48%;
         height: 38%;
         padding: 20px 30px;
@@ -530,14 +540,17 @@ nav {
         box-shadow: 0px 8px 20px rgba(19, 20, 20, 0.05);
         position: absolute;
 
-        &-title{
-            @include setText('Cormorant',30px,500);
+        &-title {
+            @include setText('Cormorant', 30px, 500);
         }
-        &-detailed{
+
+        &-detailed {
             margin-top: 20px;
-            @include setFlex(space-between,center,row);
+            @include setFlex(space-between, center, row);
             width: 100%;
-            .column1,.column2{
+
+            .column1,
+            .column2 {
                 width: 40%;
                 display: flex;
                 flex-direction: column;
@@ -545,75 +558,79 @@ nav {
                 position: relative;
             }
 
-            .column1::after{
+            .column1::after {
                 content: "";
                 position: absolute;
-                width:1px;
+                width: 1px;
                 height: 100%;
-                top:0;
+                top: 0;
                 left: 125%;
                 background-color: $gray;
             }
 
-            .column-item{
-                @include setFlex(space-between,center,row);
+            .column-item {
+                @include setFlex(space-between, center, row);
                 width: 100%;
-                @include setText($fontPhone,12px,400);
+                @include setText($fontPhone, 12px, 400);
 
-                &-title{
+                &-title {
                     color: $navBar;
                     text-align: left;
                 }
-                &-value{
+
+                &-value {
                     padding-left: 1px;
                     width: 45px;
-                    color:$black;
+                    color: $black;
                     text-align: left;
                 }
             }
-            .column-item + .column-item{
+
+            .column-item+.column-item {
                 margin-top: 8px;
             }
         }
     }
 
-    .subtabsNav{
+    .subtabsNav {
         position: relative;
         z-index: 40;
-        top:40%;
+        top: 40%;
         left: 17%;
-        .navBar:hover, .navBar.checked {
+
+        .navBar:hover,
+        .navBar.checked {
             background-color: $orange;
         }
 
-        .navBar{
+        .navBar {
             margin-right: 25px;
         }
 
-        .left{
+        .left {
             margin: 0 20px;
         }
     }
 
-    .subtabs{
-        .tab-title{
+    .subtabs {
+        .tab-title {
             @include setText($fontPhone, 12px, 400);
             background-color: white;
             color: $gray;
         }
     }
 
-    .sub{
+    .sub {
         position: absolute;
         width: 100%;
         background-color: blue;
     }
 
     .tab :checked+.tab-title {
-        background-color:  #FFFFFF;
+        background-color: #FFFFFF;
         color: $orange;
     }
-    
+
     .subtabs .tab :checked+.tab-title {
         color: $black;
     }

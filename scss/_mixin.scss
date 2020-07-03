@@ -1,5 +1,4 @@
-@mixin sliderConfig($url){
-    width:50%;
+@mixin imgConfig($url){
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

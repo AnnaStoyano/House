@@ -1,4 +1,5 @@
 window.onload = function () {
+   
     callRequest();
     sliderNavigation();
     pagesNavigation();
@@ -200,16 +201,59 @@ function tabNavigation(section, div, photosQuery, display) {
 }
 
 function sliderNavigation() {
-    let slider = document.querySelector('.slider');
-    let slides = document.querySelectorAll('.slide');
-    let rightSlide = document.querySelector('.slider .navigation .right');
-    let leftSlide = document.querySelector('.slider .navigation .left');
-    let navBar1 = document.querySelectorAll('.slider .navBar');
-
-    const callBack = function (slides, count, checkedId) {
-        slides[0].style.marginLeft = `${count}%`;
+  
+    const navBars = document.querySelectorAll('.slider .navBar');
+    const rightSlide = document.querySelector('.slider .navigation .right');
+    const leftSlide = document.querySelector('.slider .navigation .left');
+    let slides = document.querySelectorAll('.slider .slide');
+    const slideArr = Array.from(slides);
+    console.log(slides)
+    const nextSlide = ()=>{
+        
+    let current = document.querySelector('.slider .current');
+        current.classList.remove('current');
+        let currentIndex = slideArr.indexOf(current);
+        let indexNext;
+        if(currentIndex != slides.length-1){
+            indexNext = currentIndex + 1;
+            slides[indexNext].classList.add('current');
+        }else{
+            indexNext=0;
+            slides[0].classList.add('current');
+        }
+        navBars[currentIndex].classList.remove('checked');
+        navBars[indexNext].classList.add('checked');
     }
-    let sliderNav = navigation(slider, slides, rightSlide, leftSlide, navBar1, true, 'checked', callBack);
+
+    const prevSlide=()=>{
+        
+    let current = document.querySelector('.slider .current');
+        current.classList.remove('current');
+        let currentIndex = slideArr.indexOf(current);
+        let indexPrev;
+        if(currentIndex != 0){
+            indexPrev = currentIndex-1;
+            slides[indexPrev].classList.add('current');
+        }else{
+            indexPrev = slides.length - 1;
+            slides[indexPrev].classList.add('current');  
+        }
+        navBars[slideArr.indexOf(current)].classList.remove('checked');
+        navBars[indexPrev].classList.add('checked');
+    }
+    
+    navBars.forEach((item,index)=>{
+        item.addEventListener('click',function(){
+            let current = document.querySelector('.slider .current');
+            current.classList.remove('current');
+            slides[index].classList.add('current');
+            navBars[index].classList.add('checked');
+            navBars[slideArr.indexOf(current)].classList.remove('checked');
+        })
+    })
+
+    rightSlide.addEventListener('click',nextSlide);
+    leftSlide.addEventListener('click',prevSlide);
 }
 
 function pagesNavigation() {

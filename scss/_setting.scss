@@ -53,11 +53,11 @@ section {
     margin-top: 50px;
     width: 182px;
     height: 38px;
+    display: inline-block;
     background-color: $orange;
     border-radius: 3px;
     color: $white;
     text-align: center;
-    outline: none;
     letter-spacing: 0.05em;
     font-size: 10px;
     border: 1px solid $orange;
@@ -69,17 +69,23 @@ section {
     }
 }
 
-.slides {
-    width: 200%;
-    height: 100%;
-    display: flex;
+button{
+    border: none;
+    background-color: transparent;
+    width: 47px;
+    height: 10px;
+    outline: none;
 }
 
 .navigation {
     @include setFlex(space-between, flex-start, row);
-    position: relative;
+    position: absolute;
 
+    .left{
+        background-image: url("../svg/Vector30.png");
+    }
     .right {
+        background-image: url("../svg/Vector30.png");
         transform: rotate(180deg);
     }
 }
@@ -121,4 +127,8 @@ section {
     padding: 12px 0 12px 0;
     background-color: #F1F1F1;
     width: 100%;
+}
+
+.slide.current{
+    opacity: 1;
 }
