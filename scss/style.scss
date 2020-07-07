@@ -208,7 +208,7 @@
             color: $orange;
             font-size: 12px;
             left: -5px;
-            top: -25px;
+            top: -45%;
         }
 
         &-unchecked {
@@ -216,7 +216,7 @@
             color: $navBar;
             font-size: 10px;
             left: -5px;
-            top: 90px;
+            top: 105%;
         }
 
         &-d {
@@ -362,11 +362,10 @@ nav {
 
 }
 
-.galary {
+.gallery {
     background-color: $white;
-
+    position: relative;
     .tree {
-        top: 15%;
         background-image: url('/svg/NYtree.png');
         position: absolute;
         background-size: contain;
@@ -394,8 +393,6 @@ nav {
 
     .tabs {
         z-index: 30;
-        bottom: 103px;
-        width: 45%;
         height: 103px;
         background-color: $white;
     }
@@ -432,17 +429,13 @@ nav {
     }
 
     .photoes {
-        width: 80vw;
         height: 100%;
         top: 0;
-        left: 20vw;
         position: relative;
 
         .photo-display {
             position: absolute;
             right: 0;
-            width: 95%;
-            height: 87%;
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -450,14 +443,9 @@ nav {
 
         .photo-query {
             z-index: 15;
-            width: 65%;
             @include setFlex(space-between, center, row);
-            height: 14%;
             right: 0;
-            background-color: $galaryBackground;
             position: absolute;
-            bottom: 0px;
-            background-color: $galaryBackground;
         }
 
         .photo {

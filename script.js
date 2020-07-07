@@ -120,11 +120,11 @@ function callRequest() {
 }
 
 function gallaryNavigation() {
-    let navBar = document.querySelectorAll('.galary .navigation');
+    let navBar = document.querySelectorAll('.gallery .navigation');
     let photosQuery = document.querySelectorAll('.photoes .photo-query');
     let display = document.querySelectorAll('.photo-display');
-    tabNavigation("galary", 'clubHouse', photosQuery[0].children, display[0]);
-    tabNavigation("galary", 'clubRes', photosQuery[1].children, display[1]);
+    tabNavigation("gallery", 'clubHouse', photosQuery[0].children, display[0]);
+    tabNavigation("gallery", 'clubRes', photosQuery[1].children, display[1]);
 
     for (let index = 0; index < photosQuery.length; index++) {
         let arrImg = (Array.from(photosQuery[index].children));
@@ -180,22 +180,15 @@ function tabNavigation(section, div, photosQuery, display) {
     }
 
     right.addEventListener('click', function (e) {
-        let current = nextSlide('galary', navBar, photosQuery, photosQueryArr);
+        let current = nextSlide('gallery', navBar, photosQuery, photosQueryArr);
         current.classList.add('checked');
         displayCurrent();
     });
 
     left.addEventListener('click', function (e) {
-        let current = prevSlide('galary', navBar, photosQuery, photosQueryArr);
+        let current = prevSlide('gallery', navBar, photosQuery, photosQueryArr);
         displayCurrent();
     });
-
-    const callBack = (container,index) => {
-       /* display.style.backgroundImage = `url(${container[index].src})`;
-        container[index].classList.add('checked');*/
-    }
-
-    navigationBar(section,navBar,photosQuery,photosQueryArr,callBack);
  }
 
 const prevSlide = (section, navBars, slides, slideArr) => {
