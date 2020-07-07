@@ -79,7 +79,6 @@
 
 .slider {
     z-index: 50;
-    overflow: hidden;
     .navigation {
         background-size: contain;
         background-position: center;
@@ -92,13 +91,10 @@
 
 
 .slide {
-    transition: all 1s ease-in-out;
+    transition: all 1.5s ease-in-out;
     height: 100%;
-    width: 100%;
-    @include setFlex(space-between, flex-start, column);
-    position: absolute;
-    opacity: 0;
-
+    width: 50%;
+    position: relative;
     &-1 {
         @include imgConfig("../svg/header-bg1.png");
     }
@@ -475,9 +471,6 @@ nav {
     }
 }
 
-.galaryChecked {
-    background-color: $orange;
-}
 
 .photo.checked {
     transform: scale(1.4);

@@ -129,6 +129,31 @@ button{
     width: 100%;
 }
 
-.slide.current{
-    opacity: 1;
+.slide.current.next{
+    margin-left: -50%;
+}
+
+.slide.current.prev{
+    margin-left: 0%;
+}
+
+.slide-content{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    @include setFlex(space-between, flex-start, column);
+}
+
+.slides {
+    width: 200%;
+    height: 100%;
+    display: flex;
+}
+
+.galary .navBar.checked {
+    background-color: $orange;
+}
+
+.call:hover{
+    cursor: pointer;
 }
