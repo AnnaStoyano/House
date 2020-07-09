@@ -39,7 +39,7 @@
         cursor: pointer;
 
         &:after {
-            content: url('/svg/Union.png');
+            content: url('./svg/Union.png');
             border: 1px solid $white;
             @include circleDrow(26px);
             background-color: $white;
@@ -82,7 +82,7 @@
 .slide {
     transition: all 1.5s ease-in-out;
     height: 100%;
-    width: 47%;
+    width: 50%;
     position: relative;
     &-1 {
         @include imgConfig("../svg/header-bg1.png");
