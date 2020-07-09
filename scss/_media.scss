@@ -1,4 +1,25 @@
 @media screen and (min-width: 1100px){
+    /*Call*/
+    .form{
+        width: 65%;   
+        max-width: 800px;
+        min-width: 350px;
+        &-content {
+            padding: 52px 47px;
+            .main-text {
+                width: 50%;
+            }
+        }
+        &-img {
+            width: 50%;
+        }
+        .request-call {
+            &-input{
+                width: 30%;
+            }
+        }
+    }
+    /*Slider*/
     .slide {
         padding: 22px 45px;
 
@@ -12,20 +33,19 @@
         }
 
         .info{
-            left: 7%;
+            left: 17%;
             width: 233px;
         }
     
         .phone{
             grid-template-columns: 30px 113px;
         }
-    
-    }
 
-    .main-text {
-        width: 47.5%;
-        max-width: 570px;
-        min-width: 450px;
+        .main-text {
+            width: 47.5%;
+            max-width: 570px;
+            min-width: 450px;
+        }
     }
 
     .slider .navigation{
@@ -65,6 +85,27 @@
 }
 
 @media screen and (min-width: 600px) and (max-width: 1099px){
+    
+    .form{
+        width: 65%;   
+        max-width: 800px;
+        min-width: 350px;
+        &-content {
+            padding: 50px 25px;
+            background-color: $white;
+            text-align: center;
+        }
+        &-img {
+            width: 0%;
+        }
+        .request-call {
+            @include setFlex(center,center,column);
+            &-input{
+                width: 70%;
+            }
+        }
+    }
+    /*Slider*/
     .slide {
         padding: 22px 45px;
 
@@ -76,22 +117,23 @@
         &-footer{
             padding-left: 4%;
         }
-    }
 
-    .info{
-        left: 17%;
-        width: 233px;
-    }
+        .info{
+            left: 17%;
+            width: 233px;
+        }
+    
+        .phone{
+            grid-template-columns: 30px 113px;
+        }
 
-    .phone{
-        grid-template-columns: 30px 113px;
+        .main-text {
+            width: 47.5%;
+            max-width: 570px;
+            min-width: 450px;
+        }
     }
-
-    .main-text {
-        width: 47.5%;
-        max-width: 570px;
-        min-width: 450px;
-    }
+    
 
     .slider .navigation{
         left:105px;
@@ -126,6 +168,29 @@
 }
 
 @media screen and (max-width:599px){
+    div.form{
+        width: 85%;  
+        top: 15%;
+        left: 4%; 
+        max-width: 800px;
+        min-width: 290px;
+        &-content {
+            padding: 45px 25px;
+            padding-bottom: 30px;
+            background-color: $white;
+            text-align: center;
+        }
+        &-img {
+            width: 0%;
+        }
+        .request-call {
+            @include setFlex(center,center,column);
+            &-input{
+                width: 70%;
+            }
+        }
+    }
+    
     /*SLIDER*/
     .slider .slide.slide-2 .logo{
         &::after {
@@ -172,7 +237,6 @@
     .main-text {
         width: 100%;
         max-width: 400px;
-        min-width: 280px;
         font-size: 46px;
     }
 
